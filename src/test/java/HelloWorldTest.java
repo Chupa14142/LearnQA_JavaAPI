@@ -1,24 +1,18 @@
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.Test;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Test;
 
 public class HelloWorldTest {
 
-    @Test
-    public void TestEx3() {
-        System.out.println("Hello from Eugene");
-
-    }
-
 
     @Test
-    public void TestEx4() {
+    public void TestRestAssured() {
         Response response = RestAssured
-                .get("https://playground.learnqa.ru/api/get_text")
+                .get("https://playground.learnqa.ru/api/hello")
                 .andReturn();
 
-        response.body().print();
+        response.prettyPrint();
+
 
     }
-
 }
