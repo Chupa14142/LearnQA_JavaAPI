@@ -38,10 +38,21 @@ public class DZ {
 
         String secondText = response.get("messages[1].message");
         System.out.println("Текст второго сообщения: " + secondText);
+    }
+
+    @Test
+    public void TestEx6() {
+        Response response = RestAssured
+                .given()
+                .redirects()
+                .follow(false)
+                .when()
+                .get("https://playground.learnqa.ru/api/long_redirect")
+                .andReturn();
 
 
-
-
+        String getUrlForRedirect = response.getHeader("Location");
+        System.out.println("\nUrl for redirect: " + getUrlForRedirect);
     }
 
 
