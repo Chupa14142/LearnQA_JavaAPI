@@ -1,6 +1,10 @@
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 import io.restassured.response.Response;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DZ {
 
@@ -21,5 +25,24 @@ public class DZ {
 
 
     }
+
+    @Test
+    public void TestEx5() {
+        JsonPath response = RestAssured
+                .get("https://playground.learnqa.ru/api/get_json_homework")
+                .jsonPath();
+
+        response.prettyPrint();
+        Object secondMessageAndTimestamp = response.get("messages[1]");
+        System.out.println("Полный текст второго сообщения: " + secondMessageAndTimestamp);
+
+        String secondText = response.get("messages[1].message");
+        System.out.println("Текст второго сообщения: " + secondText);
+
+
+
+
+    }
+
 
 }
